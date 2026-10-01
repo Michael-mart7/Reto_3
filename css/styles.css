@@ -1,0 +1,128 @@
+/*Configuración general*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/*Encabezado*/
+.header {
+    background-color: #ffffff;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+/*Menú*/
+.nav-menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/*Enlaces deñ menú*/
+.nav-menu a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    padding: 8px 0;
+    /* Suaviza el cambio de color*/
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/*Transformación cuando pasa el cursor*/
+.nav-menu a:hover {
+    color: #007BFF;
+    transform: translateY(-2px);
+}
+
+/*Animación subrayado*/
+.nav-menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    /*La línea comienza sin ancho*/
+    width: 0;
+    height: 2px;
+    background-color: #007BFF;
+    /* Anima el crecimiento de la línea*/
+    transition: width 0.3s ease;
+}
+
+/*Para indicar que la línea usa todo el espacio*/
+.nav-menu a:hover::after,
+.nav-menu a:focus::after {
+    width: 100%;
+}
+
+/*Indicador activo azul*/
+.nav-menu li:focus-within a {
+    color: #007BFF;
+}
+.nav-menu li:focus-within a::after {
+    width: 100%;
+}
+
+/*Secciones*/
+.section {
+    min-height: 80vh;
+    padding: 80px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+/*Fondo para una sección seleccionada*/
+.section:target {
+    background-color: #f0f7ff;
+}
+
+/*Para Tablets o pantallas medianas*/
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+    }
+    .nav-menu {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    .nav-menu a {
+        font-size: 15px;
+    }
+    .section {
+        min-height: 70vh;
+        padding: 60px 20px;
+    }
+}
+
+/*En pantallas demasiado pequeñas el menú cambia a vertical*/
+@media (max-width: 480px) {
+
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .nav-menu a {
+        font-size: 16px;
+    }
+
+    .section {
+        min-height: 80vh;
+        padding: 50px 15px;
+    }
+}
